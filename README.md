@@ -31,7 +31,7 @@ growingList(7); // return [1,2,3,4,5,6,7]
 * Ouput: The product of every numbers
 
 ```javascript
-// loop method
+// for loop method
 function productOfArray(numbers) {
   var list = 1;
   for (var i = 0; i < numbers.length; i++) {
@@ -68,7 +68,7 @@ productOfArray([2, 3, 7, 10]); // return 420;
 * Ouput: The average length
 
 ```javascript
-// Loop method
+// for loop method
 function averageWordLength(array) {
   var list = 0;
   for (var i = 0; i < array.length; i++) {
@@ -137,18 +137,18 @@ displaySentence({ name: "Steve", gender: "male" }); // return 'His name is Steve
 
 ```javascript
 function displaySentence(person) {
-  return person.male ? "His" : "Her" + " name is " + person.name;
+  return person.gender === "male" ? "His" : "Her" + " name is " + person.name;
 }
 displaySentence({ name: "Jane", gender: "female" }); // return 'Her name is Jane'
 ```
 
-## Counting Repetion
+## Counting Repetion of a string in an array
 
 * Input: An array of string and a string
 * Output: The number of time the string is present in the array
 
 ```javascript
-// loop method
+// for loop method
 function howManyTimes(words, word) {
   var wordCount = 0;
   for (var i = 0; i < words.length; i++) {
@@ -157,12 +157,15 @@ function howManyTimes(words, word) {
   return wordCount;
 }
 howManyTimes(words, "matter"); // returns 4
+```
 
+```javascript
 // functional
 function howManyTimes(words, word) {
   return words.filter(item => item === word).length;
 }
 howManyTimes(words, "dog"); // returns 0
+
 var words = [
   "machine",
   "matter",
@@ -176,4 +179,52 @@ var words = [
   "disobedience",
   "matter"
 ];
+```
+
+## Longest fullname
+
+* Input: An array of objects with each time a 'firstname' and 'lastname' property
+* Output: The longuest fullname (with a space in between)
+
+```javascript
+// for loop method
+function longuestFullname(persons) {
+  longestName = "";
+  for (var i = 0; i < persons.length; i++) {
+    if (
+      persons[i].firstname.length + persons[i].lastname.length >
+      longestName.length
+    ) {
+      longestName = `${persons[i].firstname} ${persons[i].lastname}`;
+    }
+  }
+  return longestName;
+}
+console.log(longuestFullname(persons)); // return Charly Martin
+
+//TODO function solution
+var persons = [
+  { firstname: "Alice", lastname: "Smith" },
+  { firstname: "Bob", lastname: "Lopez" },
+  { firstname: "Charly", lastname: "Martin" }
+];
+console.log("\n> Exercise 7 --- Should display 'Charly Martin'");
+```
+
+##Max of matrix
+
+* Input: A two dimensional array of numbers
+* Output: The maximum number of this matrix
+
+```javascript
+// for loop method
+//cant be bothered
+
+// functional
+function maxMatrix(matrix) {
+  return Math.max(...[].concat.apply([], matrix));
+}
+var matrix1 = [[1, 6, 7], [7, 8, 4], [3, 5, 0]];
+
+maxMatrix(matrix1); //return 8
 ```
