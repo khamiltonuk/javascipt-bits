@@ -1,4 +1,6 @@
-# javascipt-bits
+# Functional js comparisons
+
+I am very aware there are many ways to solev a problems in programing and I think this can often be over looked. Personaly when writing code I like ot use functional programing principles but when interacting with some developers they are more comfortable with alternative methods and I wanted to create this referance of problems sloved in a variety of ways to compare between them to help as a learning too for people on both sides. I must confession I am not very comfortable with for loops as I haven't used them very often.
 
 ## Make an array with values from 1 to n
 
@@ -6,6 +8,7 @@
 * Ouput: An array that contains n elements: 1, 2, 3, ... n
 
 ```javascript
+// For loop method
 function growingList(n) {
   var list = [];
   for (var i = 1; i <= n; i++) {
@@ -17,7 +20,7 @@ growingList(6); // return [1,2,3,4,5,6]
 ```
 
 ```javascript
-//functional
+// Functional method using Es6 `Array.from()` and `Array.keys()`
 function growingList(n) {
   return Array.from(Array(n).keys(), x => ++x);
   //return [...Array(n).keys()].map(x => ++x);
@@ -27,11 +30,11 @@ growingList(7); // return [1,2,3,4,5,6,7]
 
 ## Find the product of an array
 
-* Input Array of numbers
+* Input: Array of numbers
 * Ouput: The product of every numbers
 
 ```javascript
-// for loop method
+// For loop method
 function productOfArray(numbers) {
   var list = 1;
   for (var i = 0; i < numbers.length; i++) {
@@ -43,7 +46,7 @@ productOfArray([2, 3, 7, 10]); // return 420;
 ```
 
 ```javascript
-//For in Loop
+// For in Loop
 function productOfArray(numbers) {
   var total = 1;
   for (var i in numbers) {
@@ -55,7 +58,7 @@ productOfArray([2, 3, 7, 10]); // return 420;
 ```
 
 ```javascript
-// Functional
+// Functional using `Array.reduce()`
 function productOfArray(numbers) {
   return numbers.reduce((acc, cur) => acc * cur);
 }
@@ -68,7 +71,7 @@ productOfArray([2, 3, 7, 10]); // return 420;
 * Ouput: The average length
 
 ```javascript
-// for loop method
+// For loop method
 function averageWordLength(array) {
   var list = 0;
   for (var i = 0; i < array.length; i++) {
@@ -100,7 +103,7 @@ averageWordLength(["Pie", "Mash"])); // returns 3.5
 ```
 
 ```javascript
-// Functional
+// Functional using `Array.reduce()`
 function averageWordLength(array) {
   return array.reduce((a, b) => a.length + b.length) / array.length;
 }
@@ -115,6 +118,13 @@ averageWordLength(["Fish", "Chips"]); // returns 4.5
   name:B gender:"female" ==> "Her name is B"
 
 ```javascript
+function displaySentence(person) {
+  return person.gender === "male" ? "His" : "Her" + " name is " + person.name;
+}
+displaySentence({ name: "Jane", gender: "female" }); // return 'Her name is Jane'
+```
+
+```javascript
 // Helper function
 function pronoun(person) {
   if (person.gender === "female") {
@@ -125,21 +135,12 @@ function pronoun(person) {
     return "Their";
   }
 }
-```
 
-```javascript
-//es6 template string
+// Es6 template string
 function displaySentence(person) {
   return `${pronoun(person)} name is ${person.name}`;
 }
 displaySentence({ name: "Steve", gender: "male" }); // return 'His name is Steve'
-```
-
-```javascript
-function displaySentence(person) {
-  return person.gender === "male" ? "His" : "Her" + " name is " + person.name;
-}
-displaySentence({ name: "Jane", gender: "female" }); // return 'Her name is Jane'
 ```
 
 ## Counting Repetion of a string in an array
@@ -148,7 +149,7 @@ displaySentence({ name: "Jane", gender: "female" }); // return 'Her name is Jane
 * Output: The number of time the string is present in the array
 
 ```javascript
-// for loop method
+// For loop method
 function howManyTimes(words, word) {
   var wordCount = 0;
   for (var i = 0; i < words.length; i++) {
@@ -160,7 +161,7 @@ howManyTimes(words, "matter"); // returns 4
 ```
 
 ```javascript
-// functional
+// Functional
 function howManyTimes(words, word) {
   return words.filter(item => item === word).length;
 }
@@ -187,7 +188,7 @@ var words = [
 * Output: The longuest fullname (with a space in between)
 
 ```javascript
-// for loop method
+// For loop method
 function longuestFullname(persons) {
   longestName = "";
   for (var i = 0; i < persons.length; i++) {
@@ -211,20 +212,47 @@ var persons = [
 console.log("\n> Exercise 7 --- Should display 'Charly Martin'");
 ```
 
-##Max of matrix
+## Max of matrix
 
 * Input: A two dimensional array of numbers
 * Output: The maximum number of this matrix
 
 ```javascript
-// for loop method
-//cant be bothered
+// For loop method - loop over arrays of array
+function maxMatrix(matrix) {
+  var highestNumber = 0;
+  for (var i = 0; i < matrix.length; i++) {
+    for (var a = 0; a < matrix[i].length; a++) {
+      if (matrix[i][a] > highestNumber) {
+        highestNumber = matrix[i][a];
+      }
+    }
+  }
+  return highestNumber;
+}
+var matrix1 = [[1, 6, 7], [7, 8, 4], [3, 5, 0]];
+maxMatrix(matrix1); //return 8
+```
 
-// functional
+```javascript
+// Functional
 function maxMatrix(matrix) {
   return Math.max(...[].concat.apply([], matrix));
 }
 var matrix1 = [[1, 6, 7], [7, 8, 4], [3, 5, 0]];
-
 maxMatrix(matrix1); //return 8
+```
+
+## Traverse array elements diagonally
+
+Source: https://www.codewars.com/kata/traverse-array-elements-diagonally/train/javascript
+In this final exercise, you're given an n x n array and you're expected to traverse the elements diagonally from the bottom right to the top left.
+
+* Input: An array of array
+* Output: An array
+
+```javascript
+function diagonal(matrix) {}
+var matrix2 = [[1, 6, 7], [7, 2, 4], [3, 5, 9]];
+diagonal(matrix2); // return [9, 4, 5, 7, 2, 3, 6, 7, 1]
 ```
