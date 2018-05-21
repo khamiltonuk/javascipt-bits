@@ -162,19 +162,19 @@ function percent(array) {
   return newarray;
 }
 var store = [18, 200, 124, 98];
-storePercentage = percent(store);
+storePercentage = percent(store); //returns [9, 100, 64, 49]
 ```
 
 ```javascript
 // Functional
 const percent = arr => {
-  const total = arr.reduce((a, b) => a + b);
+  const max = Math.max(...arr);
   return arr.map(int => {
-    return Math.floor(int / total * 100);
+    return int !== 0 ? Math.floor(int / max * 100) : 0;
   });
 };
 var store = [18, 200, 124, 98];
-storePercentage = percent(store);
+storePercentage = percent(store); // returns [9, 100, 62, 49]
 ```
 
 ## Counting Repetion of a string in an array
