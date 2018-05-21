@@ -1,6 +1,6 @@
-# Functional js comparisons
+# Functional javascript comparisons
 
-I am very aware there are many ways to solev a problems in programing and I think this can often be over looked. Personaly when writing code I like ot use functional programing principles but when interacting with some developers they are more comfortable with alternative methods and I wanted to create this referance of problems sloved in a variety of ways to compare between them to help as a learning too for people on both sides. I must confession I am not very comfortable with for loops as I haven't used them very often.
+I am very aware there are many ways to solve a problems in programing and I think this can often be over looked. Personaly when writing code I like to use functional programing principles but when interacting with some developers they are more comfortable with alternative methods and I wanted to create this referance of problems sloved in a variety of ways to compare between them to help as a learning tool for people on both sides. I must confession I am not very comfortable with for loops as I haven't used them very often.
 
 ## Make an array with values from 1 to n
 
@@ -141,6 +141,40 @@ function displaySentence(person) {
   return `${pronoun(person)} name is ${person.name}`;
 }
 displaySentence({ name: "Steve", gender: "male" }); // return 'His name is Steve'
+```
+
+## Convert values in an array to percentage
+
+* Input: Array of numbers
+* Ouput: The average of every number
+
+```javascript
+// For loop method
+function percent(array) {
+  var i,
+    max = 0;
+  var newarray = new Array();
+
+  for (i = 0; i < array.length; i++) if (array[i] > max) max = array[i];
+
+  for (i = 0; i < array.length; i++) newarray[i] = array[i] * 100 / max;
+
+  return newarray;
+}
+var store = [18, 200, 124, 98];
+storePercentage = percent(store);
+```
+
+```javascript
+// Functional
+const percent = arr => {
+  const total = arr.reduce((a, b) => a + b);
+  return arr.map(int => {
+    return Math.floor(int / total * 100);
+  });
+};
+var store = [18, 200, 124, 98];
+storePercentage = percent(store);
 ```
 
 ## Counting Repetion of a string in an array
