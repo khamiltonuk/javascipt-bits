@@ -4,8 +4,8 @@ I am very aware there are many ways to solve a problems in programing and I thin
 
 ## Make an array with values from 1 to n
 
-* Input: a number "n"
-* Ouput: An array that contains n elements: 1, 2, 3, ... n
+- Input: a number "n"
+- Ouput: An array that contains n elements: 1, 2, 3, ... n
 
 ```javascript
 // For loop method
@@ -30,8 +30,8 @@ growingList(7); // return [1,2,3,4,5,6,7]
 
 ## Find the product of an array
 
-* Input: Array of numbers
-* Ouput: The product of every numbers
+- Input: Array of numbers
+- Ouput: The product of every numbers
 
 ```javascript
 // For loop method
@@ -67,8 +67,8 @@ productOfArray([2, 3, 7, 10]); // return 420;
 
 ## Find the average length of strings in array
 
-* Input: Array of strings
-* Ouput: The average length
+- Input: Array of strings
+- Ouput: The average length
 
 ```javascript
 // For loop method
@@ -112,8 +112,8 @@ averageWordLength(["Fish", "Chips"]); // returns 4.5
 
 ## Display a sentence describing a person
 
-* Input: Object with two properties: name (string) and gender ('male' or 'female')
-* Ouput: A string that is
+- Input: Object with two properties: name (string) and gender ('male' or 'female')
+- Ouput: A string that is
   name:A gender:"male" ==> "His name is A"
   name:B gender:"female" ==> "Her name is B"
 
@@ -145,8 +145,8 @@ displaySentence({ name: "Steve", gender: "male" }); // return 'His name is Steve
 
 ## Convert values in an array to percentage
 
-* Input: Array of numbers
-* Ouput: The average of every number
+- Input: Array of numbers
+- Ouput: The average of every number
 
 ```javascript
 // For loop method
@@ -157,7 +157,7 @@ function percent(array) {
 
   for (i = 0; i < array.length; i++) if (array[i] > max) max = array[i];
 
-  for (i = 0; i < array.length; i++) newarray[i] = array[i] * 100 / max;
+  for (i = 0; i < array.length; i++) newarray[i] = (array[i] * 100) / max;
 
   return newarray;
 }
@@ -170,7 +170,7 @@ storePercentage = percent(store); //returns [9, 100, 64, 49]
 const percent = arr => {
   const max = Math.max(...arr);
   return arr.map(int => {
-    return int !== 0 ? Math.floor(int / max * 100) : 0;
+    return int !== 0 ? Math.floor((int / max) * 100) : 0;
   });
 };
 var store = [18, 200, 124, 98];
@@ -179,8 +179,8 @@ storePercentage = percent(store); // returns [9, 100, 62, 49]
 
 ## Counting Repetion of a string in an array
 
-* Input: An array of string and a string
-* Output: The number of time the string is present in the array
+- Input: An array of string and a string
+- Output: The number of time the string is present in the array
 
 ```javascript
 // For loop method
@@ -218,8 +218,8 @@ var words = [
 
 ## Longest fullname
 
-* Input: An array of objects with each time a 'firstname' and 'lastname' property
-* Output: The longuest fullname (with a space in between)
+- Input: An array of objects with each time a 'firstname' and 'lastname' property
+- Output: The longuest fullname (with a space in between)
 
 ```javascript
 // For loop method
@@ -235,21 +235,36 @@ function longuestFullname(persons) {
   }
   return longestName;
 }
-console.log(longuestFullname(persons)); // return Charly Martin
-
-//TODO function solution
 var persons = [
   { firstname: "Alice", lastname: "Smith" },
   { firstname: "Bob", lastname: "Lopez" },
   { firstname: "Charly", lastname: "Martin" }
 ];
-console.log("\n> Exercise 7 --- Should display 'Charly Martin'");
+console.log(longuestFullname(persons)); // return Charly Martin
+```
+
+```javascript
+// Functional
+function longestFullName(people) {
+  return people.reduce((acc, { firstname, lastname }) => {
+    return firstname.length + lastname.length > acc.length
+      ? (acc = `${firstname} ${lastname}`)
+      : acc;
+  }, "");
+}
+
+var persons = [
+  { firstname: "Alice", lastname: "Smith" },
+  { firstname: "Bob", lastname: "Lopez" },
+  { firstname: "Charly", lastname: "Martin" }
+];
+console.log(longuestFullname(persons)); // return Charly Martin
 ```
 
 ## Max of matrix
 
-* Input: A two dimensional array of numbers
-* Output: The maximum number of this matrix
+- Input: A two dimensional array of numbers
+- Output: The maximum number of this matrix
 
 ```javascript
 // For loop method - loop over arrays of array
@@ -282,8 +297,8 @@ maxMatrix(matrix1); //return 8
 Source: https://www.codewars.com/kata/traverse-array-elements-diagonally/train/javascript
 In this final exercise, you're given an n x n array and you're expected to traverse the elements diagonally from the bottom right to the top left.
 
-* Input: An array of array
-* Output: An array
+- Input: An array of array
+- Output: An array
 
 ```javascript
 function diagonal(matrix) {}
