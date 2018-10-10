@@ -223,7 +223,7 @@ var words = [
 
 ```javascript
 // For loop method
-function longuestFullname(persons) {
+function longestFullName(persons) {
   longestName = "";
   for (var i = 0; i < persons.length; i++) {
     if (
@@ -240,7 +240,7 @@ var persons = [
   { firstname: "Bob", lastname: "Lopez" },
   { firstname: "Charly", lastname: "Martin" }
 ];
-console.log(longuestFullname(persons)); // return Charly Martin
+console.log(longestFullName(persons)); // return Charly Martin
 ```
 
 ```javascript
