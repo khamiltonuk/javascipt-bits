@@ -1,11 +1,11 @@
 # Functional javascript comparisons
 
-I am very aware there are many ways to solve a problems in programing and I think this can often be over looked. Personaly when writing code I like to use functional programing principles but when interacting with some developers they are more comfortable with alternative methods and I wanted to create this referance of problems sloved in a variety of ways to compare between them to help as a learning tool for people on both sides. I must confession I am not very comfortable with for loops as I haven't used them very often.
+I am very aware there are many ways to solve a problems in programing and I think this can often be over looked. Personally when writing code I like to use functional programing principles but when interacting with some developers they are more comfortable with alternative methods and I wanted to create this reference of problems solved in a variety of ways to compare between them to help as a learning tool for people on both sides. I must confession I am not very comfortable with for loops as I haven't used them very often.
 
 ## Make an array with values from 1 to n
 
 - Input: a number "n"
-- Ouput: An array that contains n elements: 1, 2, 3, ... n
+- Output: An array that contains n elements: 1, 2, 3, ... n
 
 ```javascript
 // For loop method
@@ -23,15 +23,25 @@ growingList(6); // return [1,2,3,4,5,6]
 // Functional method using Es6 `Array.from()` and `Array.keys()`
 function growingList(n) {
   return Array.from(Array(n).keys(), x => ++x);
-  //return [...Array(n).keys()].map(x => ++x);
+  //return [...Array(n).keys()].map(x => ++x); // alternative method
 }
 growingList(7); // return [1,2,3,4,5,6,7]
+```
+
+```javascript
+// lodash
+import { range } from "lodash";
+
+function growingList(n) {
+  return range(1, n + 1);
+}
+growingList(8); // return [1,2,3,4,5,6,7,8]
 ```
 
 ## Find the product of an array
 
 - Input: Array of numbers
-- Ouput: The product of every numbers
+- Output: The product of every numbers
 
 ```javascript
 // For loop method
@@ -68,7 +78,7 @@ productOfArray([2, 3, 7, 10]); // return 420;
 ## Find the average length of strings in array
 
 - Input: Array of strings
-- Ouput: The average length
+- Output: The average length
 
 ```javascript
 // For loop method
@@ -113,7 +123,7 @@ averageWordLength(["Fish", "Chips"]); // returns 4.5
 ## Display a sentence describing a person
 
 - Input: Object with two properties: name (string) and gender ('male' or 'female')
-- Ouput: A string that is
+- Output: A string that is
   name:A gender:"male" ==> "His name is A"
   name:B gender:"female" ==> "Her name is B"
 
@@ -146,7 +156,7 @@ displaySentence({ name: "Steve", gender: "male" }); // return 'His name is Steve
 ## Convert values in an array to percentage
 
 - Input: Array of numbers
-- Ouput: The average of every number
+- Output: The average of every number
 
 ```javascript
 // For loop method
@@ -177,7 +187,7 @@ var store = [18, 200, 124, 98];
 storePercentage = percent(store); // returns [9, 100, 62, 49]
 ```
 
-## Counting Repetion of a string in an array
+## Counting Repetition of a string in an array
 
 - Input: An array of string and a string
 - Output: The number of time the string is present in the array
@@ -216,10 +226,10 @@ var words = [
 ];
 ```
 
-## Longest fullname
+## Longest full name
 
 - Input: An array of objects with each time a 'firstname' and 'lastname' property
-- Output: The longuest fullname (with a space in between)
+- Output: The longest full name (with a space in between)
 
 ```javascript
 // For loop method
